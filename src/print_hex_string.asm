@@ -1,8 +1,8 @@
 [org 0x7c00]
     jmp main
 
-%include "src/_print_string.asm"
-%include "src/_print_hex_16.asm"
+%include "src/lib/print_string.asm"
+%include "src/lib/print_hex_16.asm"
 
 main:
     mov dx, 0x2f36

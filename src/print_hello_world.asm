@@ -8,7 +8,7 @@
 
     jmp $
 
-%include "src/_print_string.asm"
+%include "src/lib/print_string.asm"
 
 ; Data
 HELLO_MSG:
