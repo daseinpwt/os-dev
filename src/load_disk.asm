@@ -10,22 +10,7 @@ main:
     mov bx, 0
     mov es, bx
     mov bx, 0x9000        ; Target memory address:    ES:BX = 0x9000
-    mov dh, 5             ; Load 5 secotrs
-                          ;
-                          ; Note that we only define 3 sectors in this
-                          ; image, but the floppy disk has 256 secotrs.
-                          ; So the data on the floppy disk will be:
-                          ;   3 secotrs (defined in this image) + 253 sectors (with zero bytes)
-                          ;
-                          ; That means:
-                          ;   (i)  loading 5 sectors is allowed
-                          ;   (ii) loading more than 256 sectors is the same as
-                          ;        loading 256 sectors, in terms of the resulting
-                          ;        memory layout.
-                          ;        
-                          ; However, for (ii), it really depends on the programmer
-                          ; whether to raise an error or not. For our implementation
-                          ; of `load_succ_boot_sectors` function, an error is raised.
+    mov dh, 5             ; The number of secotrs to load
 
     mov dl, [BOOT_DRIVE]  ; Select drive
     call load_succ_boot_sectors
@@ -40,7 +25,7 @@ main:
     jmp $ ; Hang
 
 BOOT_DRIVE:
-    db 0
+    db 0    ; set drive: 0-3=diskette (floppy); 80H-81H=hard disk
 
     ; Padding and magic BIOS number
     times 510-($-$$) db 0
