@@ -12,10 +12,10 @@
 
 ; Data
 HELLO_MSG:
-    db 'Hello, World!', 0x0D, 0x0A, 0 ; 0x0D: Carriage return  0x0A: Line feed
+    db 'Hello, World!', 0x0d, 0x0a, 0 ; 0x0D: Carriage return  0x0A: Line feed
 
 GOODBYE_MSG:
-    db 'Goodbye!', 0x0D, 0x0A, 0
+    db 'Goodbye!', 0x0d, 0x0a, 0
 
     ; Padding and magic BIOS number
     times 510-($-$$) db 0

@@ -1,6 +1,12 @@
 ;; function print_string
+;; description:
+;;     print a 0-terminated string on the console
+;; 
 ;; parameters:
-;;     bx: the memory address of the string (must be 0 terminiated)
+;;     bx: the memory address of the string
+
+%ifndef _PRINT_STRING_ASM
+%define _PRINT_STRING_ASM
 
 print_string:
     pusha
@@ -17,3 +23,5 @@ print_string:
 .end:
     popa
     ret
+
+%endif
