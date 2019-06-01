@@ -1,4 +1,6 @@
 [org 0x7c00]
+    mov bp, 0x8000
+    mov sp, bp
     jmp main
 
 %include "src/lib/print_hex_16.asm"

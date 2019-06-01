@@ -1,4 +1,6 @@
 [org 0x7c00]
+    mov bp, 0x8000
+    mov sp, bp
 
     mov bx, HELLO_MSG
     call print_string

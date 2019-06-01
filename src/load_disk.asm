@@ -1,13 +1,12 @@
 [org 0x7c00]
+    mov bp, 0x8000
+    mov sp, bp
     jmp main
 
 %include "src/lib/load_succ_boot_sectors.asm"
 %include "src/lib/print_hex_16.asm"
     
 main:
-    mov bp, 0x8000        ; Set the stack safely (far from 0x7c00)
-    mov sp, bp
-
     mov bx, 0
     mov es, bx
     mov bx, 0x9000        ; Target memory address:    ES:BX = 0x9000
