@@ -13,9 +13,10 @@
 print_hex_16:
     pusha
 
-    mov bx, 5 ;; start from the last char in [.hex_str]
+    mov bx, .hex_str
+    mov cx, 5 ;; start from the last char in [.hex_str]
 .loop:
-    cmp bx, 1
+    cmp cx, 1
     je .print
     
     mov ax, dx
@@ -31,9 +32,10 @@ print_hex_16:
     add al, 0x61
 
 .set_char:
-    mov [.hex_str + bx], al
+    mov di, cx
+    mov [bx + di], al
     shr dx, 4
-    sub bx, 1
+    sub cx, 1
     jmp .loop
 
 .print:
