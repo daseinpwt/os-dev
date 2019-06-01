@@ -1,14 +1,28 @@
-OUTPUTS = $(patsubst src/%.asm,images/%.bin,$(wildcard src/*.asm))
+OUTPUTS = $(patsubst src/%.asm,boot_img/%.bin,$(wildcard src/*.asm))
 
-.PHONY: run clean
+.PHONY: boot_dev boot_vm run-vm new-vm clean
 
 all: $(OUTPUTS)
 
-images/%.bin: src/%.asm
+boot_img/%.bin: src/%.asm
 	nasm $< -O0 -f bin -o $@
 
-run:
-	qemu-system-i386 -nographic -fda $(IMAGE)
+boot-dev:
+	qemu-system-i386 -nographic -boot order=a -fda $(IMAGE)
+
+boot-vm:
+	qemu-system-i386 -nographic -boot order=a -fda $(IMAGE) -hda disk_img/vm$(ID).raw
+
+run-vm:
+	qemu-system-i386 -nographic -hda disk_img/vm$(ID).raw
+
+new-vm:
+	@if [ -f "disk_img/vm$(ID).raw" ]; then \
+		echo "vm file exists."; \
+		exit 1; \
+	else \
+		qemu-img create -f raw disk_img/vm$(ID).raw $(SIZE); \
+	fi
 
 clean:
-	rm -f images/*
+	rm -f boot_img/*
