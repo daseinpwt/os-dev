@@ -8,7 +8,7 @@ images/%.bin: src/%.asm
 	nasm $< -O0 -f bin -o $@
 
 run:
-	qemu-system-i386 -nographic -drive format=raw,file=$(IMAGE)
+	qemu-system-i386 -nographic -fda $(IMAGE)
 
 clean:
 	rm -f images/*
