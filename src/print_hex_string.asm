@@ -1,7 +1,6 @@
 [org 0x7c00]
     jmp main
 
-%include "src/lib/print_string.asm"
 %include "src/lib/print_hex_16.asm"
 
 main:
