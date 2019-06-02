@@ -1,2 +1,2 @@
-boot_img/*.bin
-disk_img/*.raw
+*.bin
+*.raw

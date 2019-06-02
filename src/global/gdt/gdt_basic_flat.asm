@@ -1,4 +1,5 @@
 ; Definition of Global Descriptor Table (GDT) and GDT descriptor
+; Based on Intel basic flat model (only one code segment and one data segment)
 ; Reference:
 ;   1. os-dev.pdf, Page.34
 ;   2. https://en.wikipedia.org/wiki/Segment_descriptor

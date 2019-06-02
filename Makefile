@@ -1,17 +1,20 @@
-OUTPUTS = $(patsubst src/%.asm,boot_img/%.bin,$(wildcard src/*.asm))
+EXAMPLES_OUTPUT = $(patsubst src/examples/%.asm,boot_img/examples/%.bin,$(wildcard src/examples/*.asm))
 
-.PHONY: boot_vm run-vm new-vm clean
+.PHONY: examples boot_vm run-vm new-vm clean
 
-all: $(OUTPUTS)
-
-boot_img/%.bin: src/%.asm
+boot_img/boot.bin: src/boot/boot.asm
 	nasm $< -O0 -f bin -o $@
 
+boot_img/examples/%.bin: src/examples/%.asm
+	nasm $< -O0 -f bin -o $@
+
+examples: $(EXAMPLES_OUTPUT)
+
 boot-vm:
-	qemu-system-i386 -nographic -boot a -fda $(IMAGE) -hda disk_img/vm-$(ID).raw
+	qemu-system-i386 -boot a -fda $(IMAGE) -hda disk_img/vm-$(ID).raw
 
 run-vm:
-	qemu-system-i386 -nographic -hda disk_img/vm-$(ID).raw
+	qemu-system-i386 -hda disk_img/vm-$(ID).raw
 
 new-vm:
 	@if [ -f "disk_img/vm-$(ID).raw" ]; then \
@@ -22,4 +25,5 @@ new-vm:
 	fi
 
 clean:
-	rm -f boot_img/*
+	rm -f boot_img/boot.bin
+	rm -f boot_img/examples/*

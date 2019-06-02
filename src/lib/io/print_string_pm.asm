@@ -1,16 +1,11 @@
-; [bits 32]
-
-VIDEO_MEMORY equ 0xb8000
-WHITE_ON_BLACK equ 0x0f
-
 ; prints a null-terminated string pointed to by EBX
-print_string_pm:   ; 'pm' stands for protected mode
-    push a
-    mov edx, VIDEO_MEMORY
+print_string_pm:     ; 'pm' stands for protected mode
+    pusha
+    mov edx, 0xb8000 ; video memory address
 
 .loop:
     mov al, [ebx]
-    mov ah, WHITE_ON_BLACK
+    mov ah, 0x0f     ; color mode: white on black
 
     cmp al, 0
     je .done
