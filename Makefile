@@ -1,6 +1,6 @@
 OUTPUTS = $(patsubst src/%.asm,boot_img/%.bin,$(wildcard src/*.asm))
 
-.PHONY: boot_dev boot_vm run-vm new-vm clean
+.PHONY: boot_vm run-vm new-vm clean
 
 all: $(OUTPUTS)
 
