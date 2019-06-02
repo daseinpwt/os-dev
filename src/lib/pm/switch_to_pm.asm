@@ -1,5 +1,15 @@
 ; Switch to protected mode
 switch_to_pm:
+    ; Clear the screen
+    mov ah, 0
+    mov al, 0x03
+    int 0x10
+
+    ; Hide the text cursor
+    mov ah, 0x01
+    mov ch, 0x10 ; (bits 0-7 unused, bit 5 disables cursor, bits 0-4 control cursor shape)
+    int 0x10
+
     cli     ; We must switch off interrupts until we have
             ; set-up the protected mode interrupt vector,
             ; otherwise interrupts will run riot.
