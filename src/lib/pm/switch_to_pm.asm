@@ -1,10 +1,5 @@
 ; Switch to protected mode
 switch_to_pm:
-    ; Clear the screen
-    mov ah, 0
-    mov al, 3
-    int 0x10
-
     cli     ; We must switch off interrupts until we have
             ; set-up the protected mode interrupt vector,
             ; otherwise interrupts will run riot.
