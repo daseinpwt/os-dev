@@ -3,8 +3,8 @@
     mov sp, bp
     jmp main
 
-%include "src/lib/load_succ_boot_sectors.asm"
-%include "src/lib/print_hex_16.asm"
+%include "src/lib/bios/load_succ_boot_sectors.asm"
+%include "src/lib/bios/print_hex_16.asm"
     
 main:
     ;; This example shows how to load data from disk

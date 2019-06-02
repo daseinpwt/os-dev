@@ -8,7 +8,7 @@
 %ifndef _PRINT_HEX_16_ASM
 %define _PRINT_HEX_16_ASM
 
-%include "src/lib/print_string.asm"
+%include "src/lib/bios/print_string.asm"
 
 print_hex_16:
     pusha

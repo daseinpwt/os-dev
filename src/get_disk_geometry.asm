@@ -3,7 +3,7 @@
     mov sp, bp
     jmp main
 
-%include "src/lib/print_hex_16.asm"
+%include "src/lib/bios/print_hex_16.asm"
     
 main:
     ; Get the hard disk CHS geometry

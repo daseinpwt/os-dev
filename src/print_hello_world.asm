@@ -10,7 +10,7 @@
 
     jmp $
 
-%include "src/lib/print_string.asm"
+%include "src/lib/bios/print_string.asm"
 
 ; Data
 HELLO_MSG:

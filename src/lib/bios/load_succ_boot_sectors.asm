@@ -10,7 +10,7 @@
 %ifndef _LOAD_SUCC_BOOT_SECTORS_ASM
 %define _LOAD_SUCC_BOOT_SECTORS_ASM
 
-%include "src/lib/print_string.asm"
+%include "src/lib/bios/print_string.asm"
 
 load_succ_boot_sectors:
     pusha
