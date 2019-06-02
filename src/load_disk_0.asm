@@ -7,6 +7,9 @@
 %include "src/lib/print_hex_16.asm"
     
 main:
+    ;; This example shows how to load data from disk
+    ;; We will load N (given by DH) sectors after the boot sector
+
     mov bx, 0
     mov es, bx
     mov bx, 0x9000        ; Target memory address:    ES:BX = 0x9000
