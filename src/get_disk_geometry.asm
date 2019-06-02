@@ -17,7 +17,7 @@ main:
     ; cx: 0xfeff
     ; heads:  0xfe (zero based) -> 255 
     ; sectors per track: 111111b (one based) = 63
-    ; cylinder: 11 1111 1110 (zero based) = 1023
+    ; cylinders: 11 1111 1110 (zero based) = 1023
     ;
     ; Check:
     ; 255 * 63 * 1023 * 512                  / 1024 / 1024 /1024 = 7.8365778923 G
@@ -28,14 +28,14 @@ main:
     ; cx: 0x08bf
     ; heads:  0xfe (zero based) -> 255 
     ; sectors per track: 111111b (one based) = 63
-    ; cylinder: 10 0000 1000 (zero based) = 521
+    ; cylinders: 10 0000 1000 (zero based) = 521
 
     ; 6GB
     ; dh: 0xfe
     ; cx: 0x0dff
     ; heads:  0xfe (zero based) -> 255 
     ; sectors per track: 111111b (one based) = 63
-    ; cylinder: 11 0000 1101 (zero based) = 781
+    ; cylinders: 11 0000 1101 (zero based) = 781
 
     call print_hex_16 ; print dx
     
