@@ -6,22 +6,6 @@
 ;;     es:bx : target memory address
 ;;     dl    : drive number. 0-3=diskette (floppy); 80H-81H=hard disk
 ;;     dh    : number of sectors to read
-;;
-;;           Note that we only write 3 sectors to the `load_disk.bin` image,
-;;           but the floppy disk has 256 secotrs. So the data on the floppy disk
-;;           will be initialized as below:
-;;             3 secotrs (defined in the image) + 253 sectors (with zero bytes)
-;;             
-;;           When we use interuppt 13h/02h to read (floppy) disk sectors:
-;;           (i)  loading 5 sectors (more than 3 sectors defined in `load_disk.bin`)
-;;                is allowed
-;;           (ii) loading more than 256 sectors is the same as
-;;                loading 256 sectors, in terms of the resulting
-;;                memory layout
-;;                   
-;;           However, for (ii), it really depends on the programmer
-;;           whether to raise an error or not. For our implementation
-;;           of `load_succ_boot_sectors` function, an error is raised.
 
 %ifndef _LOAD_SUCC_BOOT_SECTORS_ASM
 %define _LOAD_SUCC_BOOT_SECTORS_ASM
